@@ -1,0 +1,25 @@
+body {
+    margin: auto;
+    font-family: 'Quicksand', sans-serif;
+    background-image: url('watercolor.jpg');
+    background-position: top;
+    background-size: 1200px 800px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+header {
+    margin: auto;
+    padding-top: 100px;
+    text-align: center;
+    font-family: 'Quicksand', sans-serif;
+}
+
+#searchBar {
+    width: 25%;
+}
+
+footer {
+    font-family: 'Quicksand', sans-serif;
+}
