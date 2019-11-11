@@ -2,7 +2,7 @@ $(document).ready(function(){
     
     var total = 0;
     
- //check if valid (if result was found)
+ //check if valid, JS validation
     function checkResults(total) {
         if(total == 0) {
             $("#numberOfResults").html("<h5>No results were found!<h5>");
@@ -16,7 +16,7 @@ $(document).ready(function(){
         }
     }
    
-    //event handler
+    //event handler, AJAX call
     $("#searchInput").on("change", function() {
         $.ajax({
             method: "GET",
@@ -26,12 +26,9 @@ $(document).ready(function(){
                 "q" : $("#searchInput").val(),
                 "image_type" : "photo"},
             success: function(result, status) {
-                //alert(result.hits.length);
-                //alert(result.hits[0].previewURL);
-                //document.getElementById("results").innerHTML = "<img src='"+ result.hits[0].previewURL + "'>";
                 total = result.hits.length;
                 
-                checkResults(total);
+                checkResults(total); //calls the JS validation
                 
                 $("#results").html(""); //clear results
                 for(var i = 0; i < result.hits.length; i++)
@@ -39,7 +36,15 @@ $(document).ready(function(){
                      $("#results").append("<div class='block'><img src='" + result.hits[i].previewURL + "' alt='" + result.hits[i].tags + "'></div>");
                 }
             }
-        });
-    });
+        });//ajax
+    });//change event
 
+    //event listeners
+    $("#searchInput").on("click", function() {
+               $("#searchInput").css("background-color", "lightskyblue");
+           });
+           
+    $("#searchInput").on("mouseleave", function() {
+               $("#searchInput").css("background-color", "white");
+    })
 });
